@@ -30,7 +30,7 @@ def usuario_escolhe_jogada(n, m):
     jogada = 0
     while not valido:
         jogada = int(input("Quantas peças você vai tirar? "))
-        if jogada > m:
+        if jogada > m or jogada <= 0 or jogada > n:
             print("Oops! Jogada inválida! Tente de novo.")
         else:
             if jogada > 1:
@@ -46,12 +46,14 @@ def computador_escolhe_jogada(n, m):
 
     multiplo = False
 
-    while not multiplo and m > 0:
-        if (n-m)%(m+1)==0:
-            pecasTiradas = m
+    while not multiplo and pecasTiradas > 0:
+        if (n-pecasTiradas)%(m+1)==0:            
             multiplo=True
         else:
-            m = m - 1
+            pecasTiradas = pecasTiradas - 1
+
+    if not multiplo:
+        pecasTiradas = m
 
     if pecasTiradas > 1:
         print("O computador retirou", pecasTiradas, "peças.")
@@ -87,5 +89,6 @@ def main():
     else:
         print("Você escolheu um campeonato!")
         campeonato()
+
 
 main()
