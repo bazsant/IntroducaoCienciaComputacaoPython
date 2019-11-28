@@ -1,5 +1,3 @@
-import pytest
-
 class Triangulo:
     def __init__(self, a, b, c):
         self.a = a
@@ -18,7 +16,7 @@ class Triangulo:
             return 'escaleno'
 
     def retangulo(self):
-        return self.a**2 == self.b**2 + self.c**2
+        return self.a**2 == self.b**2 + self.c**2 or self.b**2 == self.a**2 + self.c**2 or self.c**2 == self.b**2 + self.a**2
 
     def semelhantes(self, triangulo):
         return self.a/triangulo.a == self.b/triangulo.b and self.b/triangulo.b == self.c/triangulo.c
@@ -47,10 +45,14 @@ def test_escaleno():
     t = Triangulo(2,1,4)
     assert t.tipo_lado() == 'escaleno'
 
-def test_triangulo_retangulo_true():
+def test_triangulo_retangulo_true1():
     t = Triangulo(5,3,4)
     assert t.retangulo() == True
 
+def test_triangulo_retangulo_true():
+    t = Triangulo(3,4,5)
+    assert t.retangulo() == True
+    
 def test_triangulo_retangulo_false():
     t = Triangulo(1,3,5)
     assert t.retangulo() == False
