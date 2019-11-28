@@ -4,4 +4,6 @@ def imprime_matriz(matriz):
             if col == len(lin)-1:
                 print(lin[col])
             else:
-                print(col, end=" ")
+                print(lin[col], end=" ")
+
+imprime_matriz([[1, 2], [3, 4]])

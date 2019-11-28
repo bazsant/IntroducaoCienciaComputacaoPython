@@ -72,10 +72,18 @@ def compara_assinatura(as_a, as_b):
     soma = 0
 
     for indice in range(0,6):
-        soma = as_a[indice] - as_b[indice]
+        calc = as_a[indice] - as_b[indice]
+        if calc < 0:
+            calc = calc * -1
 
+        soma = soma + calc
+
+    #print('soma:',soma)
+    
     valor = soma / 6
 
+    #print('valor:',valor)
+    
     if valor < 0:
         valor = valor * -1
     
@@ -110,7 +118,7 @@ def calcula_assinatura(texto):
     sac = len(frases) / len(sentencas)
     pal = qtCaracteresFras / len(frases)
 
-    # print('texto:', [wal, ttr, hlr, sal, sac, pal])
+    #print('texto:', [wal, ttr, hlr, sal, sac, pal])
     
     return [wal, ttr, hlr, sal, sac, pal]
 
@@ -121,7 +129,7 @@ def avalia_textos(textos, ass_cp):
         assinatura = calcula_assinatura(texto)
         probCopia.append(compara_assinatura(assinatura, ass_cp))
         
-    # print('probCopia:',probCopia)
+    print('probCopia:',probCopia)
     sabMenor =  probCopia[0]
     textoEscolhido = 1
     for indice in range(1, len(probCopia)):
@@ -136,16 +144,22 @@ def main():
     print('O autor do texto', avalia_textos(textos, assinaturaPadrao),'está infectado com COH-PIAH')
     
 def mock():
-    # assinaturaPadrao = [4.5,0.60,0.35,85.0,2.0,40.5]
-    # assinaturaPadrao = [4.79,0.72,0.56,80.5,2.5,31.6]
-    assinaturaPadrao = [5.0, 0.75, 0.6, 465.0, 10.0, 45.0]
+    #ass1 = [4.34, 0.05, 0.02, 12.81, 2.16, 0.0]
+    #ass2 = [3.96, 0.05, 0.02, 22.22, 3.41, 0.0]
 
-    print('ass_padrao:', assinaturaPadrao)
+    #print(compara_assinatura(ass1, ass2))
+    
+    #assinaturaPadrao = [4.5,0.60,0.35,85.0,2.0,40.5]
+    #assinaturaPadrao = [4.79,0.72,0.56,80.5,2.5,31.6]
+    #assinaturaPadrao = [5.0, 0.75, 0.6, 465.0, 10.0, 45.0]
 
-    textos = ['Navegadores antigos tinham uma frase gloriosa:"Navegar é preciso; viver não é preciso". Quero para mim o espírito [d]esta frase, transformada a forma para a casar como eu sou: Viver não é necessário; o que é necessário é criar. Não conto gozar a minha vida; nem em gozá-la penso. Só quero torná-la grande,ainda que para isso tenha de ser o meu corpo e a (minha alma) a lenha desse fogo. Só quero torná-la de toda a humanidade;ainda que para isso tenha de a perder como minha. Cada vez mais assim penso.Cada vez mais ponho da essência anímica do meu sangueo propósito impessoal de engrandecer a pátria e contribuirpara a evolução da humanidade.É a forma que em mim tomou o misticismo da nossa Raça.',
-              'Voltei-me para ela; Capitu tinha os olhos no chão. Ergueu-os logo, devagar, e ficamos a olhar um para o outro... Confissão de crianças, tu valias bem duas ou três páginas, mas quero ser poupado. Em verdade, não falamos nada; o muro falou por nós. Não nos movemos, as mãos é que se estenderam pouco a pouco, todas quatro, pegando-se, apertando-se, fundindo-se. Não marquei a hora exata daquele gesto. Devia tê-la marcado; sinto a falta de uma nota escrita naquela mesma noite, e que eu poria aqui com os erros de ortografia que trouxesse, mas não traria nenhum, tal era a diferença entre o estudante e o adolescente. Conhecia as regras do escrever, sem suspeitar as do amar; tinha orgias de latim e era virgem de mulheres.',
-              'NOSSA alegria diante dum sistema metafisico, nossa satisfação em presença duma construção do pensamento, em que a organização espiritual do mundo se mostra num conjunto lógico, coerente a harmônico, sempre dependem eminentemente da estética; têm a mesma origem que o prazer, que a alta satisfação, sempre serena afinal, que a atividade artística nos proporciona quando cria a ordem e a forma a nos permite abranger com a vista o caos da vida, dando-lhe transparência.']
-    print('O autor do texto', avalia_textos(textos, assinaturaPadrao),'está infectado com COH-PIAH')
+    #print('ass_padrao:', assinaturaPadrao)
+
+    #textos = ['Navegadores antigos tinham uma frase gloriosa:"Navegar é preciso; viver não é preciso". Quero para mim o espírito [d]esta frase, transformada a forma para a casar como eu sou: Viver não é necessário; o que é necessário é criar. Não conto gozar a minha vida; nem em gozá-la penso. Só quero torná-la grande,ainda que para isso tenha de ser o meu corpo e a (minha alma) a lenha desse fogo. Só quero torná-la de toda a humanidade;ainda que para isso tenha de a perder como minha. Cada vez mais assim penso.Cada vez mais ponho da essência anímica do meu sangueo propósito impessoal de engrandecer a pátria e contribuirpara a evolução da humanidade.É a forma que em mim tomou o misticismo da nossa Raça.',
+    #         'Voltei-me para ela; Capitu tinha os olhos no chão. Ergueu-os logo, devagar, e ficamos a olhar um para o outro... Confissão de crianças, tu valias bem duas ou três páginas, mas quero ser poupado. Em verdade, não falamos nada; o muro falou por nós. Não nos movemos, as mãos é que se estenderam pouco a pouco, todas quatro, pegando-se, apertando-se, fundindo-se. Não marquei a hora exata daquele gesto. Devia tê-la marcado; sinto a falta de uma nota escrita naquela mesma noite, e que eu poria aqui com os erros de ortografia que trouxesse, mas não traria nenhum, tal era a diferença entre o estudante e o adolescente. Conhecia as regras do escrever, sem suspeitar as do amar; tinha orgias de latim e era virgem de mulheres.',
+    #          'NOSSA alegria diante dum sistema metafisico, nossa satisfação em presença duma construção do pensamento, em que a organização espiritual do mundo se mostra num conjunto lógico, coerente a harmônico, sempre dependem eminentemente da estética; têm a mesma origem que o prazer, que a alta satisfação, sempre serena afinal, que a atividade artística nos proporciona quando cria a ordem e a forma a nos permite abranger com a vista o caos da vida, dando-lhe transparência.']
+    #print('O autor do texto', avalia_textos(textos, assinaturaPadrao),'está infectado com COH-PIAH')
+    pass
 
 main()
 
